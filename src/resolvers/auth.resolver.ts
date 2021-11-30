@@ -5,7 +5,6 @@ import { User } from "../entity/user.entity";
 import { hash, compareSync } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import { environment } from "../config/environment";
-import { captureRejections } from "events";
 
 @InputType()
 class UserInput {
@@ -122,8 +121,8 @@ export class AuthResolver {
                 jwt: jwt,
             }
 
-        } catch (error) {
-            throw new Error(error.message)
+        } catch (e) {
+            throw new Error(e.message)
         }
 
 
