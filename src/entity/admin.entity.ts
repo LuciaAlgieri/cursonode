@@ -2,10 +2,9 @@ import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne } f
 import { Author } from "./author.entity";
 import { Field, ObjectType } from "type-graphql";
 
-
 @ObjectType()
 @Entity()
-export class Book {
+export class Admin {
 
     @Field()
     @PrimaryGeneratedColumn()
@@ -13,14 +12,18 @@ export class Book {
 
     @Field()
     @Column()
-    title!: string
+    fullName!: string
 
-    @Field(() => Author)
-    @ManyToOne(() => Author, author => author.books, { onDelete: 'CASCADE' })
-    author!: Author
+    @Field()
+    @Column()
+    email!: string
+
+    @Field()
+    @Column()
+    password!: string
+
 
     @Field()
     @CreateDateColumn({ type: 'timestamp' })
     createdAt!: string
 }
-

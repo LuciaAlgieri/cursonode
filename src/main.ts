@@ -1,5 +1,7 @@
 import { startServer } from './server';
 import { connect } from './config/typeorm';
+const express = require('express');
+const path = require('path');
 
 async function main() {
     connect()
